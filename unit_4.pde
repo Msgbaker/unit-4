@@ -1,18 +1,28 @@
 
+color darkOcean=#4D9DE6;
+color mediumOcean=#42A9E4;
+color mediumishOcean=#30B4E4;
+color lightishOcean=#52BFE0;
+color lightOcean=#89D1E0;
+color h=#000000;
+color j=#000000;
+color l=#000000;
 float[] boatXs={random(10,640),random(10,640),random(10,640)};
 float[] boatYs={random(136,342),random(136,342),random(136,342)};
-int boats,a,c,cloudAmount,k;
+int boats,a,c,cloudAmount,k,lineY;
 float boatx1=boatXs[0];
 float boatx2=boatXs[1];
 float boatx3=boatXs[2];
-float cloudx,scale1,scale2,scale3,cloud,Cloud,cloudparency1,cloudparency2;
+float cloudx,scale1,scale2,scale3,cloud,Cloud,cloudparency1,cloudparency2,percent;
 void setup(){
   size(650,400);
-  if(boatx2-boatx1<10) boatx1=boatx1-15;
+  if(boatx2-boatx1<10) boatx1=boatx1+15;
   if(boatx3-boatx2<10) boatx3=boatx3+15;
-  if(boatx3-boatx1<10) boatx1=boatx1-15;
+  if(boatx3-boatx1<10) boatx1=boatx1+15;
   cloudx=random(45,70);
   cloud=30;
+  percent=0;
+  lineY=135;
   //b has to be over 136 and under 342
 }
 
@@ -20,7 +30,11 @@ void draw(){
   scale1=map(boatYs[0],136,342,0.1,1);
   scale2=map(boatYs[1],136,342,0.1,1);
   scale3=map(boatYs[2],136,342,0.1,1);
+  stroke(50, 115, 199);
   line(0,133,650,133);
+  stroke(64,126,209);
+  line(0,134,650,134);
+  stroke(0);
   line(0,350,650,350);
   ocean(0,0);
 }
@@ -31,12 +45,27 @@ void ocean(int x,int y){
   boatA(boatx1,boatYs[0],scale1);
   boatA(boatx2,boatYs[1],scale2);
   boatA(boatx3,boatYs[2],scale3);
-  while(cloudAmount<7){
-   cloudAmount=cloudAmount+1;
-   cloud(cloud,40);
-   cloud=cloud+90;
-
+  while(lineY>134 && lineY<220){
+    percent=map(lineY,134,220,0,1);
+    color h=lerpColor(darkOcean,mediumOcean,percent);
+    stroke(h);
+    line(0,lineY,650,lineY);
+    lineY=lineY+1;
   }
-  
+  while(lineY>219 && lineY<306){
+    percent=map(lineY,220,306,0,1);
+    color j=lerpColor(mediumOcean,lightishOcean,percent);
+    stroke(j);
+    line(0,lineY,650,lineY);
+    lineY=lineY+1;
+  }
+  while(lineY>305 && lineY<350){
+   percent=map(lineY,306,350,0,1);
+   color l=lerpColor(lightishOcean,lightOcean,percent);
+   stroke(l);
+   line(0,lineY,650,lineY);
+   lineY=lineY+1;
+  }
+  seagull(20,10);
   popMatrix();
 }

@@ -7,8 +7,6 @@ void boatA(float x,float y,float s){
   fill(255);
   triangle(18,-6,2,-3,18,-45);
   triangle(19,-45,19,-7,41,-9);
-  fill(220);
-  ellipse(18.9,-25,6,36);
   fill(255);
   stroke(0);
   fill(0);
