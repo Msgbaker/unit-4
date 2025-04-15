@@ -1,9 +1,13 @@
-void seagull(int x, int y){
+void seagull(int x, int y,float s){
   pushMatrix();
   translate(x,y);
+  scale(s);
   noFill();
+  stroke(0);
+  strokeWeight(.5);
   ellipse(0,0,17,16);
   ellipse(14,0,17,16);
+  strokeWeight(1);
   noStroke();
   fill(205);
   rect(-10,-2,40,20);
