@@ -1,4 +1,4 @@
-void seagull(int x, int y,float s){
+void seagull(float x, float y,float s){
   pushMatrix();
   translate(x,y);
   scale(s);
