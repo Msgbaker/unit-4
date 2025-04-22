@@ -16,10 +16,11 @@ int boats, c, cloudAmount, k, lineY, boatColour;
 float boatx1=boatXs[0];
 float boatx2=boatXs[1];
 float boatx3=boatXs[2];
-float cloudx, scale1, scale2, scale3, seagullx,seagully,percent, trans,waveY,waveX;
+float scale1, scale2, scale3;
+float waveRand;
+float cloudx, seagullx,seagully,percent, trans,waveCount,waveX,wavex;
 void setup() {
   size(650, 400);
-  
   if (boatx2-boatx1<10) boatx1=boatx1+15;
   if (boatx3-boatx2<10) boatx3=boatx3-15;
   if (boatx3-boatx1<10) boatx1=boatx1+15;
@@ -35,20 +36,19 @@ void setup() {
   percent=0;
   lineY=135;
   ocean(0, 0);
+  waveRand=0;
   //b has to be over 136 and under 342
 }
 void draw() {
-  waveX=waveX+5;
-  wave(0,0);
-  wave(-1,1);
-  wave(-2,2);
-  wave(-3,3);
+
 }
 
 void ocean(int x, int y) {
   pushMatrix();
   translate(x, y);
   sea();
+  wave(0,(int)random(150,280),(int)random(1,1.5));
+  wave(0,(int)random(150,280),(int)random(1,1.5));
   beach();
   while(seagullx<750){
     seagull(seagullx,seagully,random(.5,.65));
