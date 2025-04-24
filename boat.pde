@@ -1,4 +1,3 @@
-
 void boatA(float x,float y,float s){
   pushMatrix();
   translate(x,y);

@@ -1,4 +1,3 @@
-
 void beach(){
   while(lineY>330 && lineY<450){
      percent=map(lineY,330,450,0,1);

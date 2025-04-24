@@ -1,4 +1,7 @@
 
+color darkSky=#5185D1;
+color topSky=#1479FD;
+color lightSky=#5CA6FD;
 color beach=#d9cbc0;
 color deepBeach=#B07F78;
 color darkOcean=#4D9DE6;
@@ -10,6 +13,8 @@ color h=#000000;
 color j=#000000;
 color l=#000000;
 color z=#000000;
+color x=#000000;
+color v=#000000;
 float[] boatXs={random(10, 640), random(10, 640), random(10, 640)};
 float[] boatYs={random(136, 330), random(136, 330), random(136, 330)};
 int boats, c, cloudAmount, k, lineY, boatColour;
@@ -17,7 +22,6 @@ float boatx1=boatXs[0];
 float boatx2=boatXs[1];
 float boatx3=boatXs[2];
 float scale1, scale2, scale3;
-float waveRand;
 float cloudx, seagullx,seagully,percent, trans,waveCount,waveX,wavex;
 void setup() {
   size(650, 400);
@@ -34,34 +38,33 @@ void setup() {
   stroke(217, 203, 192);
   line(0, 350, 650, 350);
   percent=0;
-  lineY=135;
-  ocean(0, 0);
-  waveRand=0;
+  lineY=1;
+  wavex=(int)random(20);
+  ocean(0,0);
+  noLoop();
   //b has to be over 136 and under 342
 }
 void draw() {
-
 }
 
 void ocean(int x, int y) {
   pushMatrix();
-  translate(x, y);
+  translate(x,y);
+  sky();
   sea();
-  wave(0,(int)random(150,280),(int)random(1,1.5));
-  wave(0,(int)random(150,280),(int)random(1,1.5));
-  beach();
-  while(seagullx<750){
-    seagull(seagullx,seagully,random(.5,.65));
-    seagullx=seagullx+random(40,100);
-    seagully=random(10,80);
-  }
-  while(seagullx<750){
-    seagull(seagullx,seagully,random(.5,.65));
-    seagullx=seagullx+random(40,100);
-    seagully=random(10,80);
-  }
+  cloud(10,0);
   boatA(boatx1, boatYs[0], scale1);
   boatA(boatx2, boatYs[1], scale2);
   boatA(boatx3, boatYs[2], scale3);
+  while(wavex<350){
+    wave(wavex,(int)random(155,270));
+    wavex=wavex+(int)random(20,200);
+  }
+  beach();
+  while(seagullx<750){
+    seagull(seagullx,seagully,random(.7,.8));
+    seagullx=seagullx+random(40,100);
+    seagully=random(10,80);
+  }
   popMatrix();
 }
