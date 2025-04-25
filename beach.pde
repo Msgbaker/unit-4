@@ -7,3 +7,10 @@ void beach(){
      lineY=lineY+1;
   }
 }
+void sand(float x,float y){
+   pushMatrix();
+   translate(x,y);
+   stroke(148, 100, 77);
+   circle(0,0,1);
+   popMatrix();
+}
